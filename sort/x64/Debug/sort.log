@@ -1,2 +1,7 @@
 ﻿  FileName.cpp
+D:\VS2022\sort\FileName.cpp(150,12): warning C4244: “初始化”: 从“ll”转换到“int”，可能丢失数据
+D:\VS2022\sort\FileName.cpp(170,42): warning C4244: “=”: 从“ll”转换到“int”，可能丢失数据
+D:\VS2022\sort\FileName.cpp(171,26): warning C4244: “=”: 从“ll”转换到“int”，可能丢失数据
+D:\VS2022\sort\FileName.cpp(172,37): warning C4244: “=”: 从“ll”转换到“int”，可能丢失数据
+D:\VS2022\sort\FileName.cpp(173,35): warning C4244: “=”: 从“ll”转换到“int”，可能丢失数据
   sort.vcxproj -> D:\VS2022\sort\x64\Debug\sort.exe

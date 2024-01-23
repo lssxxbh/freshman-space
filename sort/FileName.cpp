@@ -1,8 +1,17 @@
 #define  _CRT_SECURE_NO_WARNINGS 
 #include<stdio.h>
+#include<string>
+#include<math.h>
+#include<algorithm>
 #include<stdlib.h>
-#define MX 1000000
+#include<iostream>
+using namespace std;
 
+typedef long long int ll;
+#define MX 100000
+
+int tem [100000] = { 0 };
+int arr[10000] = { 0 };
 void randNum(int* num, int count)
 {
 	int i = 0;
@@ -72,19 +81,114 @@ void selectsort(int arr[], int length)
 	}
 }
 
+void insertsort(int arr[], int length)
+//插入排序
+{
+	for (int i = 1; i < length; i++)
+	{
+		for (int j = i; j >= 1 && arr[j] < arr[j - 1]; j--)
+		{
+			int temp = arr[j];
+			arr[j] = arr[j - 1];
+			arr[j - 1] = temp;
+		}
+	}
+}
+
+
+void quick_sort(int l, int r, int arr[])//快速排序
+{
+	if (l >= r) return;
+	int x = arr[l], i = l - 1, j = r + 1;//注意边界， l左移一位，r右移一位；
+	while (i < j)
+	{
+		while (arr[++i] > x);
+		while (arr[--j] < x);
+		if (i < j)
+		{
+			int tem = arr[i];
+			arr[i] = arr[j];
+			arr[j] = tem;
+		}
+	}
+	quick_sort(l, j, arr);
+	quick_sort(j + 1, r, arr);
+
+
+}
+
+void merge_sort(int l, int r, int arr[])//归并排序
+{
+	if (l >= r) return;
+	int mid = (l + r) / 2;
+
+	merge_sort(l, mid, arr);
+	merge_sort(mid + 1, r, arr);
+
+	int i = l, j = mid + 1, k = 0;
+	while (i <= mid && j <= r)
+		if (arr[i] > arr[j]) tem[k++] = arr[i++];
+		else tem[k++] = arr[j++];
+	while (i <= mid) tem[k++] = arr[i++];
+	while (j <= r) tem[k++] = arr[j++];
+	for (i = l, j = 0; i <= r; i++, j++)
+		arr[i] = tem[j];
+
+
+}
+
+void quick2(ll arr[], ll l, ll r)
+{
+	if (l >= r) return;
+	ll i = l - 1, j = r + 1, x = arr[l];
+	while (i < j)
+	{
+		while (arr[++i] > x);
+		while (arr[--j] < x);
+		if (i < j)
+		{
+			int tmp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = tmp;
+		}
+	}
+	quick2(arr, l, j);
+	quick2(arr, j + 1, r);
+
+
+}
+
+void merge2(ll arr[], ll l, ll r)
+{
+	if (l >= r) return;
+	ll mid = (l + r) / 2;
+	merge2(arr, l, mid);
+	merge2(arr, mid + 1, r);
+	ll i = l, j = mid + 1;
+	ll k = 0;
+	while (i <= mid && j <= r)
+		if (arr[i] < arr[j]) tem[k++] = arr[i++];
+		else tem[k++] = arr[j++];
+	while (i <= mid) tem[k++] = arr[i++];
+	while (j <= r) tem[k++] = arr[j++];
+	for (i = l, j = 0; i <= r; i++, j++)
+		arr[i] = tem[j];
 
 
 
 
+}
 
-int arr[MX + 10] = {0};
+
+
+
 int main()
 {
 	int n;
 	scanf("%d", &n);
 	randNum(arr, n);
 	showarr(arr, n);
-	bubsort(arr, n);
-	disshowarr(arr, n);
+	sort
+	showarr(arr, n);
 
 }
